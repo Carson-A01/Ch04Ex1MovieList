@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using MovieList.Models;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +29,16 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+//Admin
+app.MapAreaControllerRoute(
+    name: "admin",
+    areaName: "Admin",
+    pattern: "Admin/{ controller = Home}/{ action = Index}/{ id ?}");
+//Custom Route
+app.MapControllerRoute(
+    name: "static",
+    pattern: "{controller=Home}/{action=Static}/Page");
+//Default Route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");

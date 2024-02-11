@@ -5,17 +5,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MovieList.Controllers
 {
-    public class HomeController : Controller
+    [Area("Admin")]
+    public class AdminHomeController : Controller
     {
         private MovieContext context { get; set; }
-        public HomeController(MovieContext cxt) => context = cxt;
+        public AdminHomeController(MovieContext cxt) => context = cxt;
 
         public IActionResult Index()
         {
             var movies = context.Movies.Include(m => m.Genre).OrderBy(m => m.Name).ToList();
             return View(movies);
         }
-        public IActionResult Static()
+        public IActionResult StaticContent()
         {
             return Content("Static Page from Custom URL");
         }
