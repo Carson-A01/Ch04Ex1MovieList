@@ -1,0 +1,7 @@
+﻿<li class="list-group-item">
+    <form asp-action="Add" method="post"><a asp-action="Index" class="btn btn-primary" 
+        asp-route-activeConf="@Model.activeConf" asp-route-activeDiv="@Model.activeDiv">Return To Home</a>
+        <button type="submit" class="btn btn-primary">Add To Favorites</button>
+        <input type="hidden" asp-for="Movie.MovieId" />
+    </form>
+</li>

@@ -1,0 +1,7 @@
+﻿@model List<Movie>;
+@{
+    ViewData["Title"] = "Session Page";
+}
+<div class= "text-center">
+    <h1 class="display-4">Session Count: @Context.Session.GetInt32("num")</h1>
+</div>

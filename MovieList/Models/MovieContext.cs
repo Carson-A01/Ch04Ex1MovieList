@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 namespace MovieList.Models
 {
     public class MovieContext : DbContext

@@ -1,0 +1,15 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "Favorites";
+}
+<div class="text-center">
+    <h2>My Favorites</h2>
+    <form asp-action="Delete" method="post">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Back To Home</a>
+        <button type="submit" class="btn btn-primary">Clear Favorites</button>
+        </form>
+        </br>
+</div>
+@{
+    var movies = Context.Session.GetObject<List<Movie>>("movies");
+}

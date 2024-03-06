@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
+
     <header>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -22,12 +23,25 @@
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="Delete">Delete</a>
                 </li>
+                <li class="nav-item">
+                    
+                </li>
             </ul>
         </nav>
     </header>
     <div class="container">
         <header class="p-4 mb-3 bg-light border">
             <h1>My Movies</h1>
+
+            @if (!ViewContext.View.Path.Contains("Favorites"))
+            {
+                var session = new MovieSession(Context.Session);
+                <h5 class="bg-info p-2">
+                    <a asp-controller="Favorites" class="text-white">My Favorites</a>
+                    <span class="badge badge-light">@(session.GetMyMovieCount())</span>
+                </h5>
+            }
+
         </header>
         @RenderBody()
     </div>
